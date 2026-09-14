@@ -23,6 +23,15 @@ providers:
     project_id: "YOUR_GCP_PROJECT_ID"
     credentials_path: "/path/to/service-account.json"
     billing_account: "YOUR_GCP_BILLING_ACCOUNT"
+    
+  # OCI Configuration
+  oci:
+    tenant_ocid: "YOUR_TENANCY_OCID"               # OCI tenacity OCID
+    user_ocid: "YOUR_USER_OCID"                    # OCI user OCID
+    fingerprint: "YOUR_KEY_FINGERPRINT"            # OCI public key fingerprint
+    private_key_path: "/path/to/oci_private_key.pem" # Path to private key file
+    compartment_ocid: "YOUR_COMPARTMENT_OCID"      # OCI compartment OCID
+    region: "us-ashburn-1"                         # OCI region
 
 # Alert Configuration
 alert:
