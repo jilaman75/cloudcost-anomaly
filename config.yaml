@@ -1,0 +1,49 @@
+# CloudCost Anomaly Configuration
+
+providers:
+  enabled: true
+  
+  # AWS Configuration
+  aws:
+    access_key_id: "YOUR_AWS_ACCESS_KEY_ID"        # Set via AWS_ACCESS_KEY_ID env var instead
+    secret_access_key: "YOUR_AWS_SECRET_ACCESS_KEY"  # Set via AWS_SECRET_ACCESS_KEY env var instead
+    region: "us-east-1"
+    account_id: "123456789012"                       # Your AWS account ID
+    
+  # Azure Configuration
+  azure:
+    subscription_id: "YOUR_AZURE_SUBSCRIPTION_ID"
+    tenant_id: "YOUR_AZURE_TENANT_ID"
+    client_id: "YOUR_AZURE_CLIENT_ID"
+    client_secret: "YOUR_AZURE_CLIENT_SECRET"
+    # Or use DefaultAzureCredential with Azure CLI login
+    
+  # GCP Configuration
+  gcp:
+    project_id: "YOUR_GCP_PROJECT_ID"
+    credentials_path: "/path/to/service-account.json"
+    billing_account: "YOUR_GCP_BILLING_ACCOUNT"
+
+# Alert Configuration
+alert:
+  threshold_pct: 30.0                    # Cost deviation from baseline to trigger alert
+  check_interval_minutes: 60             # How often to check costs
+  
+  # Slack Configuration (optional)
+  slack_webhook_url: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+  slack_channel: "#cost-alerts"
+  
+  # Email Configuration (optional)
+  smtp_host: "smtp.gmail.com"            # or your SMTP host
+  smtp_port: 587
+  smtp_user: "alerts@yourdomain.com"
+  smtp_password: "YOUR_EMAIL_PASSWORD"
+  email_from: "alerts@yourdomain.com"
+  email_recipients:
+    - "admin@yourdomain.com"
+    - "finance@yourdomain.com"
+  
+  # Severity levels
+  severity_levels:
+    - "warning"       # >30% deviation
+    - "critical"      # >100% deviation
