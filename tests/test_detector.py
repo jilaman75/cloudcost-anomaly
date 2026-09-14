@@ -73,10 +73,10 @@ def test_detector_anomaly():
     
     detector.update_baseline(normal_entries)
     
-    # Anomalous entry
+    # Anomalous entry (30-100% deviation → warning severity)
     anomalous_entries = [
         CostEntry(timestamp=datetime.now().strftime('%Y-%m-%d'),
-                  service="Compute", provider="aws", cost=500.0)
+                  service="Compute", provider="aws", cost=150.0)
     ]
     
     alerts = detector.detect(anomalous_entries)
